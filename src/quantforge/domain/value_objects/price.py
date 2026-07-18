@@ -28,14 +28,10 @@ class Price:
         try:
             value = Decimal(self.value)
         except (InvalidOperation, TypeError) as exc:
-            raise DomainValidationError(
-                "Price must be a valid decimal."
-            ) from exc
+            raise DomainValidationError("Price must be a valid decimal.") from exc
 
         if value < 0:
-            raise DomainValidationError(
-                "Price cannot be negative."
-            )
+            raise DomainValidationError("Price cannot be negative.")
 
         object.__setattr__(self, "value", value)
 
