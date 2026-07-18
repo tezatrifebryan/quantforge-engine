@@ -1,15 +1,27 @@
 [build-system]
-requires=["setuptools>=80"]
-build-backend="setuptools.build_meta"
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
 
 [project]
-name="trading-engine-v2"
-version="0.1.0a1"
-requires-python=">=3.13"
+name = "quantforge-engine"
+version = "0.1.0a1"
+description = "A modular quantitative trading framework."
+readme = "README.md"
+requires-python = ">=3.13"
 
-dependencies=[
-"ccxt>=4.5.0",
-"pandas>=2.3.0",
-"numpy>=2.3.0",
-"python-dotenv>=1.1.0"
+dependencies = [
+    "ccxt>=4.5.0",
+    "numpy>=2.3.0",
+    "pandas>=2.3.0",
+    "python-dotenv>=1.1.0",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.17.0",
+    "pytest>=8.4.0",
+    "ruff>=0.12.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
