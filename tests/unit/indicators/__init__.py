@@ -1,0 +1,3 @@
+"""
+Indicator unit tests.
+"""
