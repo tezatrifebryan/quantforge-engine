@@ -1,6 +1,4 @@
-from quantforge.domain.enums import OrderSide
-from quantforge.domain.enums import OrderStatus
-from quantforge.domain.enums import OrderType
+from quantforge.domain.enums import OrderSide, OrderStatus, OrderType
 
 
 def test_order_side_values() -> None:

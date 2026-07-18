@@ -8,11 +8,9 @@ from collections.abc import Sequence
 from dataclasses import dataclass
 
 from quantforge.domain.value_objects import Candle
-from quantforge.indicators import IndicatorError
-from quantforge.indicators import SimpleMovingAverage
+from quantforge.indicators import IndicatorError, SimpleMovingAverage
 from quantforge.strategy.exceptions import StrategyError
-from quantforge.strategy.signal import Signal
-from quantforge.strategy.signal import SignalAction
+from quantforge.strategy.signal import Signal, SignalAction
 
 MINIMUM_CROSSOVER_POINTS = 2
 BUY_REASON = "fast_ma_crossed_above_slow_ma"

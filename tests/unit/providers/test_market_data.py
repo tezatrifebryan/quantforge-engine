@@ -1,17 +1,12 @@
 from collections.abc import Sequence
 from dataclasses import dataclass
-from datetime import UTC
-from datetime import datetime
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
 
-from quantforge.domain.value_objects import Price
-from quantforge.domain.value_objects import Symbol
-from quantforge.domain.value_objects import Timeframe
-from quantforge.domain.value_objects import Volume
-from quantforge.providers import CcxtMarketDataProvider
-from quantforge.providers import ProviderError
+from quantforge.domain.value_objects import Price, Symbol, Timeframe, Volume
+from quantforge.providers import CcxtMarketDataProvider, ProviderError
 from quantforge.providers.market_data import RawOhlcvRow
 
 

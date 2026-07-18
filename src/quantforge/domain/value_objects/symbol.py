@@ -41,7 +41,7 @@ class Symbol:
         object.__setattr__(self, "quote", quote)
 
     @classmethod
-    def from_pair(cls, pair: str) -> "Symbol":
+    def from_pair(cls, pair: str) -> Symbol:
         """
         Create a symbol from a BASE/QUOTE pair.
         """

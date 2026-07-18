@@ -1,15 +1,10 @@
-from datetime import UTC
-from datetime import datetime
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
 
 from quantforge.domain.exceptions import DomainValidationError
-from quantforge.domain.value_objects import Candle
-from quantforge.domain.value_objects import Price
-from quantforge.domain.value_objects import Symbol
-from quantforge.domain.value_objects import Timeframe
-from quantforge.domain.value_objects import Volume
+from quantforge.domain.value_objects import Candle, Price, Symbol, Timeframe, Volume
 
 
 def test_create_bullish_candle() -> None:

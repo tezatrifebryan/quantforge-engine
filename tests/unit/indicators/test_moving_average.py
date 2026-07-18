@@ -1,17 +1,14 @@
-from datetime import UTC
-from datetime import datetime
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
 
-from quantforge.domain.value_objects import Candle
-from quantforge.domain.value_objects import Price
-from quantforge.domain.value_objects import Symbol
-from quantforge.domain.value_objects import Timeframe
-from quantforge.domain.value_objects import Volume
-from quantforge.indicators import ExponentialMovingAverage
-from quantforge.indicators import IndicatorError
-from quantforge.indicators import SimpleMovingAverage
+from quantforge.domain.value_objects import Candle, Price, Symbol, Timeframe, Volume
+from quantforge.indicators import (
+    ExponentialMovingAverage,
+    IndicatorError,
+    SimpleMovingAverage,
+)
 
 
 def test_simple_moving_average() -> None:

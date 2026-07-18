@@ -1,17 +1,12 @@
-from datetime import UTC
-from datetime import datetime
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
 
-from quantforge.domain.enums import OrderSide
-from quantforge.domain.enums import OrderStatus
-from quantforge.domain.enums import OrderType
+from quantforge.domain.enums import OrderSide, OrderStatus, OrderType
 from quantforge.domain.exceptions import DomainValidationError
 from quantforge.domain.models import Order
-from quantforge.domain.value_objects import Price
-from quantforge.domain.value_objects import Symbol
-from quantforge.domain.value_objects import Volume
+from quantforge.domain.value_objects import Price, Symbol, Volume
 
 
 def test_create_market_order() -> None:
