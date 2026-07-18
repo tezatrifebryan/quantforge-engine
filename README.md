@@ -1,3 +1,3 @@
-# Trading Engine V2
+# QuantForge Engine
 
-Professional trading engine.
+A modular quantitative trading framework.

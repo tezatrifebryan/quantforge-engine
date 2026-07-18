@@ -6,31 +6,31 @@ Dependencies are one-way.
 
 Providers
 
-↓
+->
 
 Domain
 
-↓
+->
 
 Indicators
 
-↓
+->
 
 Analysis
 
-↓
+->
 
 Strategy
 
-↓
+->
 
 Risk
 
-↓
+->
 
 Execution
 
-↓
+->
 
 Reporting
 
