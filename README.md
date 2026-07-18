@@ -32,6 +32,7 @@ from quantforge.domain.value_objects import Price
 from quantforge.domain.value_objects import Symbol
 from quantforge.domain.value_objects import Timeframe
 from quantforge.domain.value_objects import Volume
+from quantforge.indicators import SimpleMovingAverage
 from quantforge.providers import CcxtMarketDataProvider
 
 candle = Candle(
@@ -52,4 +53,7 @@ candles = provider.fetch_candles(
     timeframe=Timeframe("1h"),
     limit=100,
 )
+
+sma = SimpleMovingAverage(period=20)
+sma_values = sma.calculate(candles)
 ```
