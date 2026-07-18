@@ -1,3 +1,0 @@
-from typing import Protocol, Any
-class RiskManager(Protocol):
-    def evaluate(self,data:Any)->Any: ...
