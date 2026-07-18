@@ -34,6 +34,7 @@ from quantforge.domain.value_objects import Timeframe
 from quantforge.domain.value_objects import Volume
 from quantforge.indicators import SimpleMovingAverage
 from quantforge.providers import CcxtMarketDataProvider
+from quantforge.strategy import MovingAverageCrossoverStrategy
 
 candle = Candle(
     symbol=Symbol("BTC", "USDT"),
@@ -56,4 +57,10 @@ candles = provider.fetch_candles(
 
 sma = SimpleMovingAverage(period=20)
 sma_values = sma.calculate(candles)
+
+strategy = MovingAverageCrossoverStrategy(
+    fast_period=20,
+    slow_period=50,
+)
+signal = strategy.generate_signal(candles)
 ```
