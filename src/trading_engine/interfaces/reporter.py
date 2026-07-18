@@ -1,0 +1,3 @@
+from typing import Protocol, Any
+class Reporter(Protocol):
+    def export(self,data:Any)->None: ...

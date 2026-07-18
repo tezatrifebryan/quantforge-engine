@@ -1,0 +1,3 @@
+from typing import Protocol, Any
+class Strategy(Protocol):
+    def generate(self,data:Any)->Any: ...

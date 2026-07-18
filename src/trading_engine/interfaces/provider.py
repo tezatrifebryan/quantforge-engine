@@ -1,0 +1,3 @@
+from typing import Protocol, Any
+class Provider(Protocol):
+    def get_candles(self,symbol:str,timeframe:str,limit:int)->Any: ...

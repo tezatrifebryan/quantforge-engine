@@ -1,0 +1,3 @@
+from typing import Protocol, Any
+class Analyzer(Protocol):
+    def analyze(self,data:Any)->Any: ...

@@ -1,0 +1,2 @@
+class TradingEngineError(Exception):
+    pass
