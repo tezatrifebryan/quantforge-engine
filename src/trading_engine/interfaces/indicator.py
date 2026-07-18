@@ -1,3 +1,0 @@
-from typing import Protocol, Any
-class Indicator(Protocol):
-    def calculate(self,data:Any)->Any: ...
