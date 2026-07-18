@@ -1,5 +1,4 @@
-from datetime import UTC
-from datetime import datetime
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
@@ -7,9 +6,7 @@ import pytest
 from quantforge.domain.enums import PositionSide
 from quantforge.domain.exceptions import DomainValidationError
 from quantforge.domain.models import Position
-from quantforge.domain.value_objects import Price
-from quantforge.domain.value_objects import Symbol
-from quantforge.domain.value_objects import Volume
+from quantforge.domain.value_objects import Price, Symbol, Volume
 
 
 def test_create_position() -> None:

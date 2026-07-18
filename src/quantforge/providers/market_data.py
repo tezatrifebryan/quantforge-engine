@@ -4,18 +4,12 @@ Market data provider contracts and adapters.
 
 from __future__ import annotations
 
-from datetime import UTC
-from datetime import datetime
-from decimal import Decimal
-from decimal import InvalidOperation
 from collections.abc import Sequence
+from datetime import UTC, datetime
+from decimal import Decimal, InvalidOperation
 from typing import Protocol
 
-from quantforge.domain.value_objects import Candle
-from quantforge.domain.value_objects import Price
-from quantforge.domain.value_objects import Symbol
-from quantforge.domain.value_objects import Timeframe
-from quantforge.domain.value_objects import Volume
+from quantforge.domain.value_objects import Candle, Price, Symbol, Timeframe, Volume
 from quantforge.providers.exceptions import ProviderError
 
 MILLISECONDS_PER_SECOND = 1_000

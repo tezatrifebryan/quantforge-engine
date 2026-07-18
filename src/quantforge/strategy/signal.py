@@ -8,8 +8,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from enum import StrEnum
 
-from quantforge.domain.value_objects import Price
-from quantforge.domain.value_objects import Symbol
+from quantforge.domain.value_objects import Price, Symbol
 
 
 class SignalAction(StrEnum):

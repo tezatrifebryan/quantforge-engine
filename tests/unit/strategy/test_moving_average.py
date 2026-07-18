@@ -1,17 +1,14 @@
-from datetime import UTC
-from datetime import datetime
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
 
-from quantforge.domain.value_objects import Candle
-from quantforge.domain.value_objects import Price
-from quantforge.domain.value_objects import Symbol
-from quantforge.domain.value_objects import Timeframe
-from quantforge.domain.value_objects import Volume
-from quantforge.strategy import MovingAverageCrossoverStrategy
-from quantforge.strategy import SignalAction
-from quantforge.strategy import StrategyError
+from quantforge.domain.value_objects import Candle, Price, Symbol, Timeframe, Volume
+from quantforge.strategy import (
+    MovingAverageCrossoverStrategy,
+    SignalAction,
+    StrategyError,
+)
 
 
 def test_generate_buy_signal_when_fast_average_crosses_above_slow_average() -> None:

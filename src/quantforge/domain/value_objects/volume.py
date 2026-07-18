@@ -5,8 +5,7 @@ Volume value object.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from decimal import Decimal
-from decimal import InvalidOperation
+from decimal import Decimal, InvalidOperation
 
 from quantforge.domain.exceptions import DomainValidationError
 
@@ -40,26 +39,26 @@ class Volume:
     def __float__(self) -> float:
         return float(self.value)
 
-    def __add__(self, other: "Volume") -> "Volume":
+    def __add__(self, other: Volume) -> Volume:
         return Volume(self.value + other.value)
 
-    def __sub__(self, other: "Volume") -> "Volume":
+    def __sub__(self, other: Volume) -> Volume:
         return Volume(self.value - other.value)
 
-    def __mul__(self, multiplier: Decimal | int | float) -> "Volume":
+    def __mul__(self, multiplier: Decimal | int | float) -> Volume:
         return Volume(self.value * Decimal(str(multiplier)))
 
-    def __truediv__(self, divisor: Decimal | int | float) -> "Volume":
+    def __truediv__(self, divisor: Decimal | int | float) -> Volume:
         return Volume(self.value / Decimal(str(divisor)))
 
-    def __lt__(self, other: "Volume") -> bool:
+    def __lt__(self, other: Volume) -> bool:
         return self.value < other.value
 
-    def __le__(self, other: "Volume") -> bool:
+    def __le__(self, other: Volume) -> bool:
         return self.value <= other.value
 
-    def __gt__(self, other: "Volume") -> bool:
+    def __gt__(self, other: Volume) -> bool:
         return self.value > other.value
 
-    def __ge__(self, other: "Volume") -> bool:
+    def __ge__(self, other: Volume) -> bool:
         return self.value >= other.value

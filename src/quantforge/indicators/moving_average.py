@@ -9,8 +9,7 @@ from dataclasses import dataclass
 from decimal import Decimal
 from typing import Protocol
 
-from quantforge.domain.value_objects import Candle
-from quantforge.domain.value_objects import Price
+from quantforge.domain.value_objects import Candle, Price
 from quantforge.indicators.exceptions import IndicatorError
 
 MINIMUM_PERIOD = 1

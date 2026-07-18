@@ -2,9 +2,7 @@
 Domain enums.
 """
 
-from .order import OrderSide
-from .order import OrderStatus
-from .order import OrderType
+from .order import OrderSide, OrderStatus, OrderType
 from .position import PositionSide
 
 __all__ = [

@@ -8,13 +8,9 @@ from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal
 
-from quantforge.domain.enums import OrderSide
-from quantforge.domain.enums import OrderStatus
-from quantforge.domain.enums import OrderType
+from quantforge.domain.enums import OrderSide, OrderStatus, OrderType
 from quantforge.domain.exceptions import DomainValidationError
-from quantforge.domain.value_objects import Price
-from quantforge.domain.value_objects import Symbol
-from quantforge.domain.value_objects import Volume
+from quantforge.domain.value_objects import Price, Symbol, Volume
 
 
 @dataclass(frozen=True, slots=True)

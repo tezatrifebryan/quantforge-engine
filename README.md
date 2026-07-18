@@ -1,40 +1,65 @@
 # QuantForge Engine
 
-A modular quantitative trading framework.
+A modular quantitative trading framework for research, backtesting, and paper execution.
 
-## Development
+QuantForge is currently an alpha engine. The core path is intentionally small and typed:
 
-Install the package with development tools:
+```text
+provider -> Candle -> indicator -> strategy Signal -> risk Order -> execution Trade -> backtest result -> performance summary
+```
+
+## Features
+
+- Immutable domain objects for market data, orders, trades, and positions.
+- CCXT-compatible market data provider that normalizes OHLCV rows into `Candle`.
+- SMA and EMA indicators.
+- Moving average crossover strategy.
+- Fixed-fraction risk sizing and signal-to-order conversion.
+- Paper order execution with fee simulation.
+- Minimal backtest engine.
+- Performance reporting for realized long-only PnL.
+
+## Install
 
 ```bash
 python -m pip install -e ".[dev]"
 ```
 
-Run validation:
+## Validate
 
 ```bash
 python -m pytest
+python -m coverage run -m pytest
+python -m coverage report
 python -m ruff check .
-python -m mypy src tests
+python -m ruff format --check .
+python -m mypy src tests scripts
 ```
 
-## Example
+## Quickstart
 
 ```python
 from datetime import UTC
 from datetime import datetime
 from decimal import Decimal
+from pathlib import Path
 
 import ccxt
 
-from quantforge.domain.value_objects import Candle
-from quantforge.domain.value_objects import Price
-from quantforge.domain.value_objects import Symbol
-from quantforge.domain.value_objects import Timeframe
-from quantforge.domain.value_objects import Volume
-from quantforge.indicators import SimpleMovingAverage
-from quantforge.providers import CcxtMarketDataProvider
-from quantforge.strategy import MovingAverageCrossoverStrategy
+from quantforge import BacktestEngine
+from quantforge import Candle
+from quantforge import CcxtMarketDataProvider
+from quantforge import CsvBacktestWriter
+from quantforge import FixedFractionPositionSizer
+from quantforge import MovingAverageCrossoverStrategy
+from quantforge import PaperOrderExecutor
+from quantforge import PerformanceReporter
+from quantforge import Price
+from quantforge import SignalRiskManager
+from quantforge import SimpleMovingAverage
+from quantforge import Symbol
+from quantforge import Timeframe
+from quantforge import Volume
 
 candle = Candle(
     symbol=Symbol("BTC", "USDT"),
@@ -63,4 +88,49 @@ strategy = MovingAverageCrossoverStrategy(
     slow_period=50,
 )
 signal = strategy.generate_signal(candles)
+
+sizer = FixedFractionPositionSizer(
+    account_equity=Price(Decimal("1000")),
+    risk_fraction=Decimal("0.02"),
+    stop_loss_fraction=Decimal("0.05"),
+)
+risk_manager = SignalRiskManager(position_sizer=sizer)
+order = risk_manager.create_order(signal)
+
+if order is not None:
+    executor = PaperOrderExecutor(fee_rate=Decimal("0.001"))
+    trade = executor.execute(
+        order=order,
+        market_price=signal.price,
+    )
+
+backtest = BacktestEngine(
+    strategy=strategy,
+    risk_manager=risk_manager,
+    executor=PaperOrderExecutor(fee_rate=Decimal("0.001")),
+    warmup_period=50,
+)
+result = backtest.run(candles)
+
+reporter = PerformanceReporter()
+summary = reporter.summarize(result.trades)
+
+CsvBacktestWriter(output_dir=Path("data/backtests/demo")).write(
+    result=result,
+    summary=summary,
+)
 ```
+
+## Offline Demo
+
+Run the local demo without exchange/network access:
+
+```bash
+python scripts/offline_backtest.py
+```
+
+It writes `summary.csv` and `trades.csv` under `data/backtests/offline_demo`.
+
+## Project Status
+
+QuantForge is usable for deterministic unit-tested research flows, but it is not production live-trading software yet. Live execution, portfolio accounting, short-selling metrics, and richer exchange error handling are future milestones.
